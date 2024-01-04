@@ -5,15 +5,15 @@ import { Context } from "../store/appContext";
 
 
 
-export const CharacterCard = () => {
+export const StarShipCard = () => {
   const { store, actions } = useContext(Context);
-  const [characters, setCharacters] = useState([]);
+  const [starShips, setstarShips] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch("https://swapi.dev/api/people/");
+      const res = await fetch("https://swapi.dev/api/starships/");
       const data = await res.json();
-      setCharacters(data.results);
+      setstarShips(data.results);
     }
     fetchData();
   }, []);
@@ -23,16 +23,16 @@ export const CharacterCard = () => {
   }
   return (
     <div className="container d-flex col-10 overflow-auto mt-5 mx-auto">
-      {characters?.map((character, index) => (
+      {starShips?.map((starShip, index) => (
         <div className="card" style={{ minWidth: "200px" }} key={index}>
-          {console.log(character.name)}
+
           <img src="..." className="card-img-top" alt="..." />
           <div className="card-body">
-            <h5 className="card-title text-dark">{character.name}</h5>
-            <button className="btn btn-primary" onClick={() => handleFavorites(character.name)}>
+            <h5 className="card-title text-dark">{starShip.name}</h5>
+            <button className="btn btn-primary" onClick={() => handleFavorites(starShip.name)}>
               <i className="far fa-heart"></i>
             </button>
-            <Link to={"characterDescription/" + (index + 1)} className="btn btn-primary">Learn More</Link>
+            <Link to={"starShipDescription/" + (index + 1)} className="btn btn-primary">Learn More</Link>
           </div>
         </div>
       ))}
