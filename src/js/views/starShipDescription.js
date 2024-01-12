@@ -5,10 +5,10 @@ import { Context } from "../store/appContext";
 
 
 
-export const starShipDescription = () => {
+export const StarShipDescription = () => {
     const { store, actions } = useContext(Context);
     const { id } = useParams();
-    const [starShip, setstarShip] = useState([]);
+    const [starship, setstarShip] = useState([]);
     console.log(id);
     function findNewId(oldID) {
         const idMap = {
